@@ -69,6 +69,7 @@
         }
         else
         {
+            //Call for sending request to the server for login
             [Utils startActivityIndicatorInView:self.view withMessage:PLEASE_WAIT];
             [self performSelector:@selector(sendLoginRequestToServer) withObject:nil afterDelay:0.5];
         }
@@ -114,6 +115,7 @@
 #pragma mark Network Method
 -(void)sendLoginRequestToServer
 {
+    //Call for the login request
     NSDictionary *dataToSendDic = [NSDictionary dictionaryWithObjectsAndKeys:self.txtEmail.text,kEmail,self.txtPassword.text,kPassword,nil];
     [Server serverSharedInstance].delegate = self;
     [[Server serverSharedInstance]sendRequestToServer:dataToSendDic requestType:kLoginRequest];
@@ -130,6 +132,7 @@
             [[NSUserDefaults standardUserDefaults]setObject:userId forKey:kUserId];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+            //Call to the Home Screen
             NSString *nibName = nil;
             nibName = SharedAppDelegate.deviceType == kiPad?@"HomeVC_iPad":(SharedAppDelegate.deviceType == kiPhone5 ?@"HomeVC_iPhone5":@"HomeVC");
             

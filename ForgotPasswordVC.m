@@ -51,6 +51,7 @@
         }
         else
         {
+            //Sending request to the server in case of Forget Password 
             [Utils startActivityIndicatorInView:self.view withMessage:PLEASE_WAIT];
             [self performSelector:@selector(sendForgetPasswordRequestToServer) withObject:nil afterDelay:0.5];
         }
